@@ -21,10 +21,13 @@ jobs:
         with:
           terraform_version: "1.16.6"
 
+      - name: Inspect GitHub OIDC claims
+        uses: github/actions-oidc-debugger@main
+        with:
+          audience: sts.amazonaws.com
       - name: Configure AWS Credentials 
         uses: aws-actions/configure-aws-credentials@v6
         with:
-          audience: https://sts.amazonaws.com
           aws-region: us-east-1
           role-to-assume: arn:aws:iam::336203085137:role/github-actions-web-provider-role
 
